@@ -1,6 +1,6 @@
 import type { Rule } from "eslint";
 
-const RENDER_BLOCKING_PATTERNS = {
+const _RENDER_BLOCKING_PATTERNS = {
   CSS: [
     "import './styles.css'",
     "import '../styles/",

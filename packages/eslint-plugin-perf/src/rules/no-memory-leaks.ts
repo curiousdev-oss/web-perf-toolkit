@@ -69,11 +69,21 @@ const rule: Rule.RuleModule = {
           }
 
           // Check for addEventListener without removeEventListener
-          if (
-            funcName === "addEventListener" ||
-            (node.callee?.type === "MemberExpression" &&
-              node.callee.property?.name === "addEventListener")
-          ) {
+          if (funcName === "addEventListener") {
+            eventListeners.add(node);
+            context.report({
+              node,
+              message:
+                "addEventListener() can cause memory leaks. Ensure removeEventListener() is called when component/module is destroyed",
+            });
+          }
+        }
+
+        // Check for MemberExpression addEventListener calls (e.g., element.addEventListener)
+        if (node.callee?.type === "MemberExpression") {
+          const prop = node.callee.property;
+          
+          if (prop?.name === "addEventListener") {
             eventListeners.add(node);
             context.report({
               node,

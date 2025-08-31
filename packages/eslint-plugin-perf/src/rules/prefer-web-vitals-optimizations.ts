@@ -1,6 +1,6 @@
 import type { Rule } from "eslint";
 
-const WEB_VITALS_PATTERNS = {
+const _WEB_VITALS_PATTERNS = {
   // Largest Contentful Paint (LCP) optimizations
   LCP: {
     patterns: ["img", "video", "background-image", "text-block", "hero-image"],
@@ -180,7 +180,7 @@ const rule: Rule.RuleModule = {
       // Check for synchronous operations that should be async
       if (node.callee?.type === "MemberExpression") {
         const obj = node.callee.object;
-        const prop = node.callee.property;
+        const _prop = node.callee.property;
 
         // Main thread blocking operations
         const blockingOps = [
@@ -204,8 +204,8 @@ const rule: Rule.RuleModule = {
       // Look for resource hints in template literals
       if (source.includes("<link")) {
         const hasPreload = source.includes('rel="preload"');
-        const hasPrefetch = source.includes('rel="prefetch"');
-        const hasDnsPrefetch = source.includes('rel="dns-prefetch"');
+        const _hasPrefetch = source.includes('rel="prefetch"');
+        const _hasDnsPrefetch = source.includes('rel="dns-prefetch"');
 
         // Check for missing preload hints for critical resources
         if (source.includes('href="') && source.includes(".woff")) {

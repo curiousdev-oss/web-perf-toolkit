@@ -4,12 +4,12 @@
 
 `web-perf-toolkit` is a TypeScript-based ESLint plugin designed to help developers write more performant web applications by catching performance issues during development.
 
-## Package: @web-perf-toolkit/eslint-plugin-perf
+## Package: @curiousdev-oss/eslint-plugin-web-perf
 
 ### Installation
 
 ```bash
-npm install -D @web-perf-toolkit/eslint-plugin-perf
+npm install -D @curiousdev-oss/eslint-plugin-web-perf
 ```
 
 ### Configuration
@@ -18,7 +18,7 @@ npm install -D @web-perf-toolkit/eslint-plugin-perf
 
 ```javascript
 // eslint.config.js
-import perf from "@web-perf-toolkit/eslint-plugin-perf";
+import perf from "@curiousdev-oss/eslint-plugin-web-perf";
 
 export default [perf.configs.recommended];
 ```
@@ -27,8 +27,8 @@ export default [perf.configs.recommended];
 
 ```json
 {
-  "plugins": ["@web-perf-toolkit/perf"],
-  "extends": ["plugin:@web-perf-toolkit/perf/recommended"]
+  "plugins": ["@curiousdev-oss/perf"],
+  "extends": ["plugin:@curiousdev-oss/perf/recommended"]
 }
 ```
 
@@ -42,7 +42,7 @@ The plugin provides three preset configurations:
 
 ```javascript
 // Use specific config
-import perf from "@web-perf-toolkit/eslint-plugin-perf";
+import perf from "@curiousdev-oss/eslint-plugin-web-perf";
 
 export default [
   perf.configs.recommended, // or .strict or .angular
@@ -53,7 +53,7 @@ export default [
 
 #### Core Performance Rules
 
-##### `@web-perf-toolkit/perf/no-blocking-apis`
+##### `@curiousdev-oss/perf/no-blocking-apis`
 
 Prevents synchronous/blocking APIs that freeze the main thread.
 
@@ -71,7 +71,7 @@ showToast("Hello!"); // Non-blocking notification
 const file = await fs.promises.readFile("./data.json");
 ```
 
-##### `@web-perf-toolkit/perf/no-heavy-namespace-imports`
+##### `@curiousdev-oss/perf/no-heavy-namespace-imports`
 
 Prevents importing entire heavy libraries that hurt bundle size.
 
@@ -87,7 +87,7 @@ import { format } from "date-fns"; // lighter alternative
 import { scaleLinear } from "d3-scale";
 ```
 
-##### `@web-perf-toolkit/perf/img-requires-dimensions`
+##### `@curiousdev-oss/perf/img-requires-dimensions`
 
 Requires dimensions on images to prevent Cumulative Layout Shift (CLS).
 
@@ -105,7 +105,7 @@ Requires dimensions on images to prevent Cumulative Layout Shift (CLS).
 
 #### Loop and Algorithm Performance
 
-##### `@web-perf-toolkit/perf/no-inefficient-loops`
+##### `@curiousdev-oss/perf/no-inefficient-loops`
 
 Prevents performance-damaging patterns inside loops.
 
@@ -125,7 +125,7 @@ for (let i = 0; i < items.length; i++) {
 }
 ```
 
-##### `@web-perf-toolkit/perf/prefer-efficient-data-structures`
+##### `@curiousdev-oss/perf/prefer-efficient-data-structures`
 
 Suggests better algorithms and data structures.
 
@@ -158,7 +158,7 @@ const result = items.flatMap((item) => item.tags.filter((tag) => tag.active));
 
 #### DOM and Memory Performance
 
-##### `@web-perf-toolkit/perf/no-expensive-dom-operations`
+##### `@curiousdev-oss/perf/no-expensive-dom-operations`
 
 Prevents DOM operations that trigger layout reflows.
 
@@ -174,7 +174,7 @@ elements.forEach((el) => el.classList.add("new-style")); // CSS class changes
 const heights = elements.map((el) => el.getBoundingClientRect().height);
 ```
 
-##### `@web-perf-toolkit/perf/no-memory-leaks`
+##### `@curiousdev-oss/perf/no-memory-leaks`
 
 Prevents common memory leak patterns.
 
@@ -198,7 +198,7 @@ ngOnDestroy() {
 }
 ```
 
-##### `@web-perf-toolkit/perf/prefer-lazy-loading`
+##### `@curiousdev-oss/perf/prefer-lazy-loading`
 
 Encourages lazy loading for better initial performance.
 

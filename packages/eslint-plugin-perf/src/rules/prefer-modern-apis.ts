@@ -130,7 +130,7 @@ const rule: Rule.RuleModule = {
 
         // Check for legacy event methods
         if (callee?.type === "MemberExpression") {
-          const obj = callee.object;
+          const _obj = callee.object;
           const prop = callee.property;
 
           if (prop?.name === "attachEvent") {

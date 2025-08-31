@@ -13,7 +13,7 @@ const rule: Rule.RuleModule = {
       // Check for inefficient array operations
       CallExpression(node: any) {
         if (node.callee?.type === "MemberExpression") {
-          const obj = node.callee.object;
+          const _obj = node.callee.object;
           const prop = node.callee.property;
           
           // Array.indexOf for existence checking

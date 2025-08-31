@@ -1,6 +1,6 @@
 import type { Rule } from "eslint";
 
-const SYNC_BLOCKING_RENDER_APIS = new Set([
+const _SYNC_BLOCKING_RENDER_APIS = new Set([
   "localStorage.getItem",
   "localStorage.setItem",
   "sessionStorage.getItem",

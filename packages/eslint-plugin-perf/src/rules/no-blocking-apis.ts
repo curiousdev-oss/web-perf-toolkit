@@ -52,6 +52,7 @@ const rule: Rule.RuleModule = {
 
     return {
       MemberExpression(node: any) {
+        if (!node) return;
         const obj = node.object;
         const prop = node.property;
         
@@ -73,9 +74,16 @@ const rule: Rule.RuleModule = {
       },
       
       CallExpression(node: any) {
+        if (!node) return;
         // Handle direct calls like localStorage.getItem(), alert(), etc.
         if (node.callee?.type === "Identifier" && SYNC_BLOCKING_APIS.has(node.callee.name)) {
           checkSyncAPI(node, node.callee.name);
+        } else if (node.callee?.type === "MemberExpression") {
+          const obj = node.callee.object;
+          const prop = node.callee.property;
+          if (obj?.name === "JSON" && prop?.name && SYNC_BLOCKING_APIS.has(`JSON.${prop.name}`)) {
+            checkSyncAPI(node, `JSON.${prop.name}`);
+          }
         }
       },
     };

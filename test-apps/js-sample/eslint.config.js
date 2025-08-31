@@ -1,10 +1,10 @@
-import perf from "@web-perf-toolkit/eslint-plugin-perf";
+import perf from "@curiousdev-oss/eslint-plugin-web-perf";
 
 export default [
   {
     files: ["**/*.js"],
     plugins: {
-      "@web-perf-toolkit/perf": perf,
+      "@curiousdev-oss/perf": perf,
     },
     rules: {
       ...perf.configs.recommended.rules,

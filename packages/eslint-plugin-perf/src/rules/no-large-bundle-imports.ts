@@ -66,7 +66,7 @@ const LARGE_LIBRARIES = new Map([
   ],
 ]);
 
-const HEAVY_NAMESPACE_PATTERNS = [
+const _HEAVY_NAMESPACE_PATTERNS = [
   "import * as",
   "require('lodash')",
   "require('moment')",

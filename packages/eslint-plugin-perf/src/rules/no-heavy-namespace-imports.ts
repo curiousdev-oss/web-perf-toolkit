@@ -18,7 +18,8 @@ const rule: Rule.RuleModule = {
     ],
   },
   create(context) {
-    const [{ deny = ["lodash", "moment"] } = {}] = context.options as Options;
+    const options = (context.options as Options)?.[0] || {};
+    const { deny = ["lodash", "moment"] } = options;
     return {
       ImportDeclaration(node: any) {
         const source = node.source?.value as string;

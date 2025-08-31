@@ -31,7 +31,7 @@ const rule: Rule.RuleModule = {
     }
     
     function checkPerformancePattern(node: any) {
-      if (loopDepth === 0) return;
+      if (loopDepth === 0 || !node) return;
       
       // Check for DOM queries
       if (node.type === "MemberExpression") {

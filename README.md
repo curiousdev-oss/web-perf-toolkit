@@ -1,6 +1,15 @@
 # Web Performance ESLint Plugin
 
-A comprehensive ESLint plugin with 14 performance-focused rules designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
+[![npm version](https://badge.fury.io/js/@curiousdev-oss%2Feslint-plugin-web-perf.svg)](https://badge.fury.io/js/@curiousdev-oss%2Feslint-plugin-web-perf)
+[![npm downloads](https://img.shields.io/npm/dm/@curiousdev-oss/eslint-plugin-web-perf.svg)](https://www.npmjs.com/package/@curiousdev-oss/eslint-plugin-web-perf)
+[![npm publish](https://img.shields.io/npm/v/@curiousdev-oss/eslint-plugin-web-perf?color=success&label=latest)](https://www.npmjs.com/package/@curiousdev-oss/eslint-plugin-web-perf)
+[![GitHub release](https://img.shields.io/github/release/curiousdev-oss/web-perf-toolkit.svg)](https://github.com/curiousdev-oss/web-perf-toolkit/releases)
+[![Install size](https://packagephobia.com/badge?p=@curiousdev-oss/eslint-plugin-web-perf)](https://packagephobia.com/result?p=@curiousdev-oss/eslint-plugin-web-perf)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A comprehensive ESLint plugin with **14 performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
+
+> 🚀 **v0.1.1 Release** - Production-ready ESLint plugin with comprehensive performance rules!
 
 ## Overview
 
@@ -9,7 +18,7 @@ Web performance is critical for user experience and business success. This ESLin
 ## Installation
 
 ```bash
-npm install --save-dev @web-perf-toolkit/eslint-plugin-perf
+npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf
 ```
 
 ## Quick Start
@@ -18,12 +27,12 @@ npm install --save-dev @web-perf-toolkit/eslint-plugin-perf
 
 ```javascript
 // eslint.config.js
-import perfPlugin from "@web-perf-toolkit/eslint-plugin-perf";
+import perfPlugin from "@curiousdev-oss/eslint-plugin-web-perf";
 
 export default [
   {
     plugins: {
-      "@web-perf-toolkit/perf": perfPlugin,
+      "@curiousdev-oss/perf": perfPlugin,
     },
     // Choose your configuration
     ...perfPlugin.configs.recommended, // Balanced approach
@@ -37,8 +46,8 @@ export default [
 
 ```json
 {
-  "plugins": ["@web-perf-toolkit/perf"],
-  "extends": ["plugin:@web-perf-toolkit/perf/recommended"]
+  "plugins": ["@curiousdev-oss/perf"],
+  "extends": ["plugin:@curiousdev-oss/perf/recommended"]
 }
 ```
 
@@ -142,9 +151,35 @@ npm run test:eslint
 
 For detailed development information, see [dev-guide.md](./dev-guide.md).
 
+## Release Information
+
+### Current Version: v0.1.1
+
+**What's New in v0.1.1:**
+- ✅ 14 comprehensive performance rules
+- ✅ 3 configuration presets (recommended, strict, angular)
+- ✅ 238 unit tests with 100% rule coverage
+- ✅ TypeScript and JavaScript support
+- ✅ Framework-specific optimizations
+- ✅ Production-ready performance linting
+
+**Installation:**
+```bash
+npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.1
+```
+
+### Roadmap
+- **v0.2.0** - Additional React-specific rules
+- **v0.3.0** - Vue.js framework support
+- **v1.0.0** - Stable API with enterprise features
+
 ## Contributing
 
-We welcome contributions that improve web performance tooling. Please review the development guide and ensure all tests pass before submitting pull requests.
+We welcome contributions that improve web performance tooling! 
+
+**Maintainer:** ![Gravatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=identicon&s=20) *kuriousdev@gmail.com*
+
+Please review the development guide and ensure all tests pass before submitting pull requests.
 
 ## License
 

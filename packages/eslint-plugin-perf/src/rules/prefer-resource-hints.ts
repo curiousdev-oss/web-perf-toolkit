@@ -1,6 +1,6 @@
   import type { Rule } from "eslint";
 
-const RESOURCE_HINT_TYPES = {
+const _RESOURCE_HINT_TYPES = {
   PRELOAD: "preload", // Critical resources needed for initial render
   PREFETCH: "prefetch", // Resources likely needed for future navigation
   PRECONNECT: "preconnect", // Establish early connections to important origins

@@ -1,4 +1,4 @@
-import perf from "@web-perf-toolkit/eslint-plugin-perf";
+import perf from "@curiousdev-oss/eslint-plugin-web-perf";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 
@@ -14,7 +14,7 @@ export default [
     },
     plugins: {
       "@typescript-eslint": typescriptEslint,
-      "@web-perf-toolkit/perf": perf,
+      "@curiousdev-oss/perf": perf,
     },
     rules: {
       ...perf.configs.strict.rules,

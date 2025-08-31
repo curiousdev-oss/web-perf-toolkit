@@ -1,6 +1,6 @@
 # ESLint Performance Plugin Test Applications
 
-This directory contains sample applications to test and demonstrate the `@web-perf-toolkit/eslint-plugin-perf` rules in action.
+This directory contains sample applications to test and demonstrate the `@curiousdev-oss/eslint-plugin-web-perf` rules in action.
 
 ## Sample Applications
 
@@ -165,11 +165,11 @@ const heights = elements.map((el) => el.getBoundingClientRect().height);
 ### Recommended Config (Balanced)
 
 ```javascript
-import perf from "@web-perf-toolkit/eslint-plugin-perf";
+import perf from "@curiousdev-oss/eslint-plugin-web-perf";
 
 export default [
   {
-    plugins: { "@web-perf-toolkit/perf": perf },
+    plugins: { "@curiousdev-oss/perf": perf },
     rules: { ...perf.configs.recommended.rules },
   },
 ];
@@ -181,7 +181,7 @@ export default [
 // All rules as errors for zero tolerance
 export default [
   {
-    plugins: { "@web-perf-toolkit/perf": perf },
+    plugins: { "@curiousdev-oss/perf": perf },
     rules: { ...perf.configs.strict.rules },
   },
 ];
@@ -193,7 +193,7 @@ export default [
 // Optimized for Angular patterns
 export default [
   {
-    plugins: { "@web-perf-toolkit/perf": perf },
+    plugins: { "@curiousdev-oss/perf": perf },
     rules: { ...perf.configs.angular.rules },
   },
 ];
