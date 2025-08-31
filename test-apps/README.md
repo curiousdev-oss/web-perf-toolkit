@@ -2,6 +2,8 @@
 
 This directory contains sample applications to test and demonstrate the `@curiousdev-oss/eslint-plugin-web-perf` rules in action.
 
+> **📦 Note**: These test apps use the published npm package (`^0.1.2`) rather than local file references, providing a realistic testing environment.
+
 ## Sample Applications
 
 ### 1. JavaScript Sample (`js-sample/`)

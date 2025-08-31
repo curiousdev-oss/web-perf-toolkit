@@ -1,0 +1,46 @@
+# Source files
+src/
+tests/
+
+# Test files and configs
+jest.config.cjs
+eslint.config.js
+*.test.ts
+*.test.js
+dist/tests/
+__tests__/
+coverage/
+
+# Development files
+tsconfig.json
+tsconfig.tsbuildinfo
+.vscode/
+.idea/
+
+# Documentation that's not needed
+TESTING.md
+dev-guide.md
+
+# Build artifacts
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git*
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Runtime files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

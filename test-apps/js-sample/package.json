@@ -7,7 +7,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@curiousdev-oss/eslint-plugin-web-perf": "file:../../packages/eslint-plugin-perf",
+    "@curiousdev-oss/eslint-plugin-web-perf": "^0.1.2",
     "eslint": "^8.57.0"
   },
   "dependencies": {
