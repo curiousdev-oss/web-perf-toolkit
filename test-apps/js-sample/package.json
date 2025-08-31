@@ -1,0 +1,17 @@
+{
+  "name": "js-sample-app",
+  "version": "1.0.0",
+  "description": "JavaScript sample app to test ESLint performance rules",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@web-perf-toolkit/eslint-plugin-perf": "file:../../packages/eslint-plugin-perf",
+    "eslint": "^8.57.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4"
+  }
+}

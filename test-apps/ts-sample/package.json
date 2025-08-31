@@ -1,0 +1,22 @@
+{
+  "name": "ts-sample-app",
+  "version": "1.0.0",
+  "description": "TypeScript sample app to test ESLint performance rules",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@web-perf-toolkit/eslint-plugin-perf": "file:../../packages/eslint-plugin-perf",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "rxjs": "^7.8.0",
+    "date-fns": "^2.29.0"
+  }
+}

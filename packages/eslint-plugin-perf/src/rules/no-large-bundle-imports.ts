@@ -1,0 +1,252 @@
+import type { Rule } from "eslint";
+
+const LARGE_LIBRARIES = new Map([
+  // Very large libraries (>100KB)
+  ["moment", { size: "300KB", alternative: "date-fns or native Intl" }],
+  [
+    "lodash",
+    {
+      size: "100KB",
+      alternative: "tree-shake specific functions or native methods",
+    },
+  ],
+  [
+    "jquery",
+    { size: "85KB", alternative: "native DOM APIs or modern frameworks" },
+  ],
+  [
+    "chart.js",
+    {
+      size: "150KB",
+      alternative: "dynamic import or lighter charting libraries",
+    },
+  ],
+  ["d3", { size: "250KB", alternative: "tree-shake specific d3 modules" }],
+  ["three", { size: "600KB", alternative: "dynamic import for 3D features" }],
+  [
+    "rxjs",
+    { size: "200KB", alternative: "tree-shake operators or native Promises" },
+  ],
+
+  // Medium libraries (50-100KB)
+  ["axios", { size: "50KB", alternative: "native fetch() API" }],
+  [
+    "monaco-editor",
+    { size: "2MB", alternative: "dynamic import for code editor features" },
+  ],
+  [
+    "pdf-lib",
+    { size: "400KB", alternative: "dynamic import for PDF features" },
+  ],
+  [
+    "fabric",
+    { size: "300KB", alternative: "native Canvas API or lighter alternatives" },
+  ],
+  [
+    "gsap",
+    { size: "100KB", alternative: "CSS animations or Web Animations API" },
+  ],
+
+  // Framework-specific heavy imports
+  [
+    "@angular/animations",
+    { size: "50KB", alternative: "CSS animations for simple cases" },
+  ],
+  [
+    "@angular/material",
+    { size: "200KB", alternative: "tree-shake specific components" },
+  ],
+  [
+    "react-router",
+    { size: "40KB", alternative: "ensure tree-shaking is working" },
+  ],
+  [
+    "material-ui",
+    { size: "300KB", alternative: "tree-shake specific components" },
+  ],
+]);
+
+const HEAVY_NAMESPACE_PATTERNS = [
+  "import * as",
+  "require('lodash')",
+  "require('moment')",
+  "require('rxjs')",
+];
+
+const rule: Rule.RuleModule = {
+  meta: {
+    type: "suggestion",
+    docs: {
+      description:
+        "Prevent importing large libraries that hurt bundle size and performance",
+    },
+    schema: [
+      {
+        type: "object",
+        properties: {
+          maxSize: { type: "number", default: 50 },
+          allowedLarge: { type: "array", items: { type: "string" } },
+          warnThreshold: { type: "number", default: 25 },
+        },
+        additionalProperties: false,
+      },
+    ],
+  },
+  create(context) {
+    const options = context.options[0] || {};
+    const maxSize = options.maxSize || 50; // KB
+    const allowedLarge = new Set(options.allowedLarge || []);
+    const warnThreshold = options.warnThreshold || 25; // KB
+
+    function getLibraryFromSource(source: string): string {
+      // Extract base library name
+      if (source.startsWith("@")) {
+        // Scoped package like @angular/core
+        const parts = source.split("/");
+        return parts.slice(0, 2).join("/");
+      } else {
+        // Regular package, get first part before /
+        return source.split("/")[0];
+      }
+    }
+
+    function checkLargeImport(node: any, source: string) {
+      const libraryName = getLibraryFromSource(source);
+      const libraryInfo = LARGE_LIBRARIES.get(libraryName);
+
+      if (!libraryInfo) return;
+      if (allowedLarge.has(libraryName)) return;
+
+      const estimatedSize = parseInt(libraryInfo.size);
+
+      if (estimatedSize >= maxSize) {
+        context.report({
+          node,
+          message: `Large library '${libraryName}' (${libraryInfo.size}) detected. Consider: ${libraryInfo.alternative}`,
+        });
+      } else if (estimatedSize >= warnThreshold) {
+        context.report({
+          node,
+          message: `Medium-sized library '${libraryName}' (${libraryInfo.size}). Ensure tree-shaking: ${libraryInfo.alternative}`,
+        });
+      }
+    }
+
+    function checkNamespaceImport(node: any, source: string) {
+      const libraryName = getLibraryFromSource(source);
+
+      // Check for namespace imports of known heavy libraries
+      const hasNamespaceImport = node.specifiers?.some(
+        (spec: any) => spec.type === "ImportNamespaceSpecifier"
+      );
+
+      if (hasNamespaceImport && LARGE_LIBRARIES.has(libraryName)) {
+        context.report({
+          node,
+          message: `Namespace import from '${libraryName}' imports the entire library. Use specific imports to enable tree-shaking.`,
+        });
+      }
+    }
+
+    function checkDefaultImportFromLargeLibrary(node: any, source: string) {
+      const libraryName = getLibraryFromSource(source);
+
+      // Check for default imports that might import everything
+      const hasDefaultImport = node.specifiers?.some(
+        (spec: any) => spec.type === "ImportDefaultSpecifier"
+      );
+
+      if (hasDefaultImport) {
+        // Special cases where default import brings in everything
+        const fullDefaultImports = ["lodash", "moment", "jquery", "rxjs"];
+
+        if (fullDefaultImports.includes(libraryName)) {
+          context.report({
+            node,
+            message: `Default import from '${libraryName}' may import the entire library. Use specific named imports for better tree-shaking.`,
+          });
+        }
+      }
+    }
+
+    return {
+      ImportDeclaration(node: any) {
+        const source = node.source?.value as string;
+        if (!source) return;
+
+        checkLargeImport(node, source);
+        checkNamespaceImport(node, source);
+        checkDefaultImportFromLargeLibrary(node, source);
+      },
+
+      // Check for require() calls
+      CallExpression(node: any) {
+        if (node.callee?.name === "require" && node.arguments?.length === 1) {
+          const arg = node.arguments[0];
+          if (arg?.type === "Literal" && typeof arg.value === "string") {
+            const source = arg.value;
+            checkLargeImport(node, source);
+          }
+        }
+      },
+
+      // Check for dynamic imports
+      ImportExpression(node: any) {
+        if (
+          node.source?.type === "Literal" &&
+          typeof node.source.value === "string"
+        ) {
+          const source = node.source.value;
+          const libraryName = getLibraryFromSource(source);
+
+          // Dynamic imports are good for large libraries!
+          if (LARGE_LIBRARIES.has(libraryName)) {
+            context.report({
+              node,
+              message: `Good! Dynamic import of '${libraryName}' helps keep initial bundle size small.`,
+            });
+          }
+        }
+      },
+
+      // Check for barrel exports that might hurt tree-shaking
+      ExportAllDeclaration(node: any) {
+        const source = node.source?.value as string;
+        if (source && LARGE_LIBRARIES.has(getLibraryFromSource(source))) {
+          context.report({
+            node,
+            message: `Re-exporting all from '${source}' prevents tree-shaking. Export specific items instead.`,
+          });
+        }
+      },
+
+      // Look for patterns that suggest inefficient imports in template strings
+      TemplateLiteral(node: any) {
+        const sourceCode = context.getSourceCode().getText(node);
+
+        // Check for import() calls in template literals
+        const importMatches = sourceCode.match(
+          /import\s*\(\s*['"`]([^'"`]+)['"`]\s*\)/g
+        );
+
+        if (importMatches) {
+          importMatches.forEach((match) => {
+            const libraryMatch = match.match(/['"`]([^'"`]+)['"`]/);
+            if (libraryMatch) {
+              const library = getLibraryFromSource(libraryMatch[1]);
+              if (LARGE_LIBRARIES.has(library)) {
+                // This is actually good - dynamic import in template
+                context.report({
+                  node,
+                  message: `Good practice: Dynamic import of '${library}' in template helps performance.`,
+                });
+              }
+            }
+          });
+        }
+      },
+    };
+  },
+};
+
+export default rule;

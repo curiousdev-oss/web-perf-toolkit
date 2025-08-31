@@ -1,0 +1,25 @@
+{
+  "name": "angular-sample-app",
+  "version": "1.0.0",
+  "description": "Angular sample app to test ESLint performance rules",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@web-perf-toolkit/eslint-plugin-perf": "file:../../packages/eslint-plugin-perf",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@angular-eslint/eslint-plugin": "^17.0.0",
+    "@angular-eslint/template-parser": "^17.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@angular/core": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "rxjs": "^7.8.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4"
+  }
+}

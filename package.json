@@ -1,0 +1,42 @@
+{
+  "name": "web-perf-toolkit",
+  "version": "1.0.0",
+  "description": "ESLint plugin for web performance optimization",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b packages/eslint-plugin-perf",
+    "build:clean": "tsc -b packages/eslint-plugin-perf --clean && npm run build",
+    "test": "npm run -w @web-perf-toolkit/eslint-plugin-perf test",
+    "test:eslint": "npm run test:eslint:ts && npm run test:eslint:angular && npm run test:eslint:js",
+    "test:eslint:ts": "cd test-apps/ts-sample && npm install && npm run lint",
+    "test:eslint:angular": "cd test-apps/angular-sample && npm install && npm run lint",
+    "test:eslint:js": "cd test-apps/js-sample && npm install && npm run lint",
+
+    "test:api": "node -e \"import('./packages/eslint-plugin-perf/dist/index.js').then(m => console.log('✅ ESLint Plugin API loaded:', Object.keys(m)))\"",
+    "test:integration": "npm run build && npm run test:eslint && npm run test:api",
+    "test:all": "npm run build && npm test && npm run test:integration",
+    "clean": "rm -rf test-apps/*/node_modules test-apps/*/package-lock.json packages/*/dist packages/*/tsconfig.tsbuildinfo",
+    "prepublishOnly": "npm run test:all"
+  },
+  "keywords": [
+    "performance",
+    "web-vitals",
+    "eslint-plugin",
+    "core-web-vitals",
+    "performance-optimization",
+    "bundle-optimization",
+    "javascript",
+    "typescript",
+    "angular",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}
