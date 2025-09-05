@@ -44,7 +44,7 @@
     "angular",
     "react"
   ],
-  "author": "",
+  "author": "curiousdev-oss",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.5.0"
