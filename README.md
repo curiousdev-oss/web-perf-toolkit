@@ -7,7 +7,7 @@
 [![Install size](https://packagephobia.com/badge?p=@curiousdev-oss/eslint-plugin-web-perf)](https://packagephobia.com/result?p=@curiousdev-oss/eslint-plugin-web-perf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive ESLint plugin with **14 performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
+A comprehensive ESLint plugin with **performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
 
 > 🚀 **v0.1.2 Release** - Production-ready ESLint plugin with comprehensive performance rules!
 
@@ -177,9 +177,9 @@ npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.2
 
 ## Contributing
 
-We welcome contributions that improve web performance tooling! 
+We welcome contributions that improve web performance tooling!
 
-**Maintainer:** ![Gravatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=identicon&s=20) *kuriousdev@gmail.com*
+**Maintainer:** `@curiousdev-oss`
 
 Please review the development guide and ensure all tests pass before submitting pull requests.
 

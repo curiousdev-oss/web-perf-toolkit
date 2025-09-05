@@ -370,12 +370,7 @@ cd test-apps/js-sample && npm run lint    # 36+ issues detected
 
 ## 👥 Maintainers
 
-**Lead Maintainer:** 
-![Gravatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=identicon&s=30) **[Your Name]** 
-📧 *[your-email@domain.com]* 
-🐙 *[@yourgithub](https://github.com/yourgithub)*
-
-> *Replace the gravatar hash above with your email's MD5 hash for your avatar*
+**Lead Maintainer:** `@curiousdev-oss`
 
 ## 🤝 Contributing
 
@@ -389,7 +384,7 @@ Please see [CONTRIBUTING.md](../../CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
-MIT License - see [LICENSE](./LICENSE) for details
+MIT License - see [LICENSE](../../LICENSE) for details
 
 ---
 
