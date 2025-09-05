@@ -10,7 +10,7 @@
 
 A comprehensive ESLint plugin with **14 performance-focused rules** designed to help developers write more performant web applications.
 
-> **🎉 v0.1.2 Optimized Release** - Production-ready with 78% smaller package size!
+> **🎉 v0.1.3 Release** - OSS polish, metadata updates, and docs sync.
 
 ## ✨ Features
 
@@ -27,10 +27,10 @@ A comprehensive ESLint plugin with **14 performance-focused rules** designed to 
 npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf
 
 # Or install specific version
-npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.2
+npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.3
 ```
 
-**Version**: 0.1.2 | **Release Date**: 2024 | **Stability**: Optimized Release
+**Version**: 0.1.3 | **Release Date**: 2025 | **Stability**: Optimized Release
 
 ## 🚀 Quick Start
 
@@ -338,6 +338,14 @@ cd test-apps/js-sample && npm run lint    # 36+ issues detected
 ```
 
 ## 📊 Release Notes
+
+### v0.1.3 - OSS & Docs Update
+
+**What's Included:**
+- Added LICENSE, CONTRIBUTING, Code of Conduct, Security policy, CODEOWNERS
+- Improved .gitignore; removed committed coverage artifacts
+- Anonymized maintainer to `@curiousdev-oss`; license link fixed
+- Package metadata updated; README synced
 
 ### v0.1.2 - Optimized Release
 

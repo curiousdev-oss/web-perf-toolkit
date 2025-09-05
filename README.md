@@ -9,7 +9,7 @@
 
 A comprehensive ESLint plugin with **performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
 
-> 🚀 **v0.1.2 Release** - Production-ready ESLint plugin with comprehensive performance rules!
+> 🚀 **v0.1.3 Release** - Production-ready ESLint plugin with comprehensive performance rules!
 
 ## Overview
 
@@ -153,9 +153,9 @@ For detailed development information, see [dev-guide.md](./dev-guide.md).
 
 ## Release Information
 
-### Current Version: v0.1.2
+### Current Version: v0.1.3
 
-**What's New in v0.1.2:**
+**What's New in v0.1.3:**
 - ✅ 14 comprehensive performance rules
 - ✅ 3 configuration presets (recommended, strict, angular)
 - ✅ 238 unit tests with 100% rule coverage
@@ -167,7 +167,7 @@ For detailed development information, see [dev-guide.md](./dev-guide.md).
 
 **Installation:**
 ```bash
-npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.2
+npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.3
 ```
 
 ### Roadmap
