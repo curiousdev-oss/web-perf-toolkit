@@ -10,6 +10,11 @@ module.exports = {
   },
   preset: 'ts-jest/presets/default-esm',
   testMatch: ["<rootDir>/tests/**/?(*.)+(spec|test).[tj]s?(x)"],
+  moduleNameMapper: {
+    // Map ESM .js extensions in source to .ts for ts-jest during tests
+    '^\./rules/(.*)\\.js$': '<rootDir>/src/rules/$1.ts',
+    '^\./(.*)\\.js$': '<rootDir>/src/$1.ts'
+  },
   collectCoverage: true,
   collectCoverageFrom: [
     "src/**/*.{ts,js}",
