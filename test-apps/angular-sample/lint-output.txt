@@ -1,0 +1,108 @@
+
+> angular-sample-app@1.0.0 lint
+> eslint .
+
+
+/Users/gunnerwhocodes/development/web-perf-toolkit/test-apps/angular-sample/src/app/performance-issues.component.ts
+    4:1   warning  Large library 'rxjs' (200KB) detected. Consider: tree-shake operators or native Promises                                @curiousdev-oss/perf/no-large-bundle-imports
+    5:1   warning  Large library 'rxjs' (200KB) detected. Consider: tree-shake operators or native Promises                                @curiousdev-oss/perf/no-large-bundle-imports
+    8:1   error    Avoid namespace import from 'lodash'. Import specific modules or use lighter alternatives                               @curiousdev-oss/perf/no-heavy-namespace-imports
+    8:1   warning  Consider dynamic import() for heavy library 'lodash' to improve initial bundle size                                     @curiousdev-oss/perf/prefer-lazy-loading
+    8:1   warning  Large library 'lodash' (100KB) detected. Consider: tree-shake specific functions or native methods                      @curiousdev-oss/perf/no-large-bundle-imports
+    8:1   warning  Namespace import from 'lodash' imports the entire library. Use specific imports to enable tree-shaking                  @curiousdev-oss/perf/no-large-bundle-imports
+    8:13  error    '_' is defined but never used                                                                                           @typescript-eslint/no-unused-vars
+    9:1   error    Avoid namespace import from 'moment'. Import specific modules or use lighter alternatives                               @curiousdev-oss/perf/no-heavy-namespace-imports
+    9:1   warning  Consider dynamic import() for heavy library 'moment' to improve initial bundle size                                     @curiousdev-oss/perf/prefer-lazy-loading
+    9:1   warning  Large library 'moment' (300KB) detected. Consider: date-fns or native Intl                                              @curiousdev-oss/perf/no-large-bundle-imports
+    9:1   warning  Namespace import from 'moment' imports the entire library. Use specific imports to enable tree-shaking                  @curiousdev-oss/perf/no-large-bundle-imports
+    9:13  error    'moment' is defined but never used                                                                                      @typescript-eslint/no-unused-vars
+   10:1   error    Avoid namespace import from 'rxjs'. Import specific modules or use lighter alternatives                                 @curiousdev-oss/perf/no-heavy-namespace-imports
+   10:1   warning  Large library 'rxjs' (200KB) detected. Consider: tree-shake operators or native Promises                                @curiousdev-oss/perf/no-large-bundle-imports
+   10:1   warning  Namespace import from 'rxjs' imports the entire library. Use specific imports to enable tree-shaking                    @curiousdev-oss/perf/no-large-bundle-imports
+   10:13  error    'rxjs' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+   23:13  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+   23:13  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+   23:13  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+   23:13  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+   23:13  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+   23:13  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+   23:13  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+   23:13  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+   23:13  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+   23:13  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+   23:13  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   23:13  warning  Critical image 'hero-banner.jpg' should be preloaded with <link rel="preload" as="image" href="hero-banner.jpg">        @curiousdev-oss/perf/prefer-resource-hints
+   23:13  error    Angular *ngFor should specify trackBy to reduce DOM churn and improve performance                                       @curiousdev-oss/perf/angular-require-trackby
+   23:13  error    Use NgOptimizedImage: replace src with ngSrc and import provideImg from @angular/common                                 @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Use NgOptimizedImage: replace src with ngSrc and import provideImg from @angular/common                                 @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Use NgOptimizedImage: replace src with ngSrc and import provideImg from @angular/common                                 @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Use NgOptimizedImage: replace src with ngSrc and import provideImg from @angular/common                                 @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   23:13  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+   51:8   error    Angular component should set changeDetection: ChangeDetectionStrategy.OnPush for better performance                     @curiousdev-oss/perf/angular-onpush-change-detection
+   69:20  error    Synchronous localStorage operations can hurt FID. Consider async alternatives or caching                                @curiousdev-oss/perf/prefer-web-vitals-optimizations
+   69:20  warning  Avoid synchronous 'localStorage' which blocks the main thread. Use async storage or cache the value                     @curiousdev-oss/perf/no-blocking-apis
+   73:23  warning  Avoid synchronous 'JSON.parse' which blocks the main thread. Consider streaming JSON parsers for large data             @curiousdev-oss/perf/no-blocking-apis
+   73:23  warning  Avoid synchronous 'JSON.parse' which blocks the main thread. Consider streaming JSON parsers for large data             @curiousdev-oss/perf/no-blocking-apis
+   76:7   warning  Avoid synchronous 'alert' which blocks the main thread. Use toast notifications or modal dialogs                        @curiousdev-oss/perf/no-blocking-apis
+   84:5   error    setInterval() can cause memory leaks. Ensure clearInterval() is called when component/module is destroyed               @curiousdev-oss/perf/no-memory-leaks
+   84:5   warning  Consider modern alternative: Use requestAnimationFrame for smooth animations                                            @curiousdev-oss/perf/prefer-modern-apis
+   89:5   error    setTimeout with 180000ms delay may cause memory leaks. Consider using intervals or shorter delays                       @curiousdev-oss/perf/no-memory-leaks
+   97:5   error    Observable subscriptions can cause memory leaks. Store subscription reference and unsubscribe in ngOnDestroy()          @curiousdev-oss/perf/no-memory-leaks
+   97:5   error    Prefer using the Angular async pipe in templates instead of subscribe() in components                                   @curiousdev-oss/perf/angular-prefer-async-pipe
+  104:5   error    Observable subscriptions can cause memory leaks. Store subscription reference and unsubscribe in ngOnDestroy()          @curiousdev-oss/perf/no-memory-leaks
+  104:5   error    Prefer using the Angular async pipe in templates instead of subscribe() in components                                   @curiousdev-oss/perf/angular-prefer-async-pipe
+  116:18  error    'product' is defined but never used                                                                                     @typescript-eslint/no-unused-vars
+  121:13  error    'element' is assigned a value but never used                                                                            @typescript-eslint/no-unused-vars
+  121:23  error    Storing DOM element references can cause memory leaks. Consider using weak references or clearing references when done  @curiousdev-oss/perf/no-memory-leaks
+  121:23  warning  CRITICAL: DOM query 'querySelector' inside a loop is expensive. Cache the result                                        @curiousdev-oss/perf/no-expensive-dom-operations
+  121:23  error    Avoid 'document.querySelector' inside loops. Cache DOM queries outside loops                                            @curiousdev-oss/perf/no-inefficient-loops
+  124:26  warning  Avoid synchronous 'JSON.stringify' which blocks the main thread. Consider streaming JSON serializers for large data     @curiousdev-oss/perf/no-blocking-apis
+  124:26  warning  Avoid synchronous 'JSON.stringify' which blocks the main thread. Consider streaming JSON serializers for large data     @curiousdev-oss/perf/no-blocking-apis
+  124:26  error    Avoid 'JSON.stringify' inside loops. Cache serialized strings outside loops                                             @curiousdev-oss/perf/no-inefficient-loops
+  125:7   error    Avoid console.log inside loops. Remove or use conditional logging                                                       @curiousdev-oss/perf/no-inefficient-loops
+  128:13  error    'activeTags' is assigned a value but never used                                                                         @typescript-eslint/no-unused-vars
+  128:26  error    Avoid array.filter() inside loops. Cache the result or move outside the loop                                            @curiousdev-oss/perf/no-inefficient-loops
+  135:23  error    Storing DOM element references can cause memory leaks. Consider using weak references or clearing references when done  @curiousdev-oss/perf/no-memory-leaks
+  135:23  warning  CRITICAL: DOM query 'getElementById' inside a loop is expensive. Cache the result                                       @curiousdev-oss/perf/no-expensive-dom-operations
+  135:23  error    Avoid 'document.getElementById' inside loops. Cache DOM queries outside loops                                           @curiousdev-oss/perf/no-inefficient-loops
+  135:23  warning  Legacy API 'document.getElementById' detected. document.querySelector with better caching for better performance        @curiousdev-oss/perf/prefer-modern-apis
+  139:9   warning  CRITICAL: Direct style access inside a loop can cause layout thrashing. Use CSS classes or batch style changes          @curiousdev-oss/perf/no-expensive-dom-operations
+  143:15  error    'height' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+  143:24  warning  CRITICAL: 'offsetHeight' triggers layout reflow inside a loop. Cache layout values when possible - triggers reflow      @curiousdev-oss/perf/no-expensive-dom-operations
+  144:15  error    'width' is assigned a value but never used                                                                              @typescript-eslint/no-unused-vars
+  144:23  warning  CRITICAL: 'offsetWidth' triggers layout reflow inside a loop. Cache layout values when possible - triggers reflow       @curiousdev-oss/perf/no-expensive-dom-operations
+  147:15  error    'priceElement' is assigned a value but never used                                                                       @typescript-eslint/no-unused-vars
+  166:9   warning  Use Array.some() instead of Array.filter().length for existence checking - avoids creating intermediate array           @curiousdev-oss/perf/prefer-efficient-data-structures
+  171:26  warning  Avoid synchronous 'JSON.parse' which blocks the main thread. Consider streaming JSON parsers for large data             @curiousdev-oss/perf/no-blocking-apis
+  171:26  warning  JSON.parse(JSON.stringify()) for cloning is inefficient. Use structured cloning algorithm or dedicated libraries        @curiousdev-oss/perf/prefer-efficient-data-structures
+  171:26  warning  Avoid synchronous 'JSON.parse' which blocks the main thread. Consider streaming JSON parsers for large data             @curiousdev-oss/perf/no-blocking-apis
+  171:37  warning  Avoid synchronous 'JSON.stringify' which blocks the main thread. Consider streaming JSON serializers for large data     @curiousdev-oss/perf/no-blocking-apis
+  171:37  warning  Avoid synchronous 'JSON.stringify' which blocks the main thread. Consider streaming JSON serializers for large data     @curiousdev-oss/perf/no-blocking-apis
+  179:20  warning  Object.keys() inside loops is inefficient. Cache the result or use Map/Set for frequent lookups                         @curiousdev-oss/perf/prefer-efficient-data-structures
+  181:9   error    Avoid console.log inside loops. Remove or use conditional logging                                                       @curiousdev-oss/perf/no-inefficient-loops
+  211:12  error    Images in templates must declare dimensions to prevent layout shifts                                                    @curiousdev-oss/perf/img-requires-dimensions
+  211:12  warning  Consider adding loading="lazy" to images in templates for better performance                                            @curiousdev-oss/perf/prefer-lazy-loading
+  211:12  error    Add loading attribute to images in templates for LCP optimization                                                       @curiousdev-oss/perf/prefer-web-vitals-optimizations
+  211:12  error    Set image dimensions in templates to prevent CLS                                                                        @curiousdev-oss/perf/prefer-web-vitals-optimizations
+  211:12  error    Use NgOptimizedImage: replace src with ngSrc and import provideImg from @angular/common                                 @curiousdev-oss/perf/angular-img-ngoptimizedimage
+  211:12  error    Add explicit width and height to <img> to prevent layout shift (CLS)                                                    @curiousdev-oss/perf/angular-img-ngoptimizedimage
+  223:7   warning  Multiple string concatenations (5) detected. Use template literals or Array.join() for better performance               @curiousdev-oss/perf/prefer-efficient-data-structures
+  223:7   warning  Multiple string concatenations (4) detected. Use template literals or Array.join() for better performance               @curiousdev-oss/perf/prefer-efficient-data-structures
+  223:7   warning  Multiple string concatenations (3) detected. Use template literals or Array.join() for better performance               @curiousdev-oss/perf/prefer-efficient-data-structures
+  235:7   error    Avoid console.log inside loops. Remove or use conditional logging                                                       @curiousdev-oss/perf/no-inefficient-loops
+
+✖ 99 problems (59 errors, 40 warnings)
+

@@ -1,4 +1,4 @@
-import perf from "@curiousdev-oss/eslint-plugin-web-perf";
+import perf from "../../packages/eslint-plugin-perf/dist/src/index.js";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 
@@ -10,6 +10,8 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
+        project: true,
+        tsconfigRootDir: "/Users/gunnerwhocodes/development/web-perf-toolkit/test-apps/angular-sample",
       },
     },
     plugins: {

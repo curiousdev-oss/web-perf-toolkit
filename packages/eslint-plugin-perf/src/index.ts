@@ -13,6 +13,10 @@ import noLargeBundleImports from "./rules/no-large-bundle-imports.js";
 import preferWebVitalsOptimizations from "./rules/prefer-web-vitals-optimizations.js";
 import noRenderBlockingResources from "./rules/no-render-blocking-resources.js";
 import preferResourceHints from "./rules/prefer-resource-hints.js";
+import angularOnPush from "./rules/angular-onpush-change-detection.js";
+import angularRequireTrackBy from "./rules/angular-require-trackby.js";
+import angularPreferAsyncPipe from "./rules/angular-prefer-async-pipe.js";
+import angularImgNgOptimized from "./rules/angular-img-ngoptimizedimage.js";
 
 export const rules: Record<string, Rule.RuleModule> = {
   "img-requires-dimensions": imgRequiresDimensions,
@@ -29,6 +33,10 @@ export const rules: Record<string, Rule.RuleModule> = {
   "prefer-web-vitals-optimizations": preferWebVitalsOptimizations,
   "no-render-blocking-resources": noRenderBlockingResources,
   "prefer-resource-hints": preferResourceHints,
+  "angular-onpush-change-detection": angularOnPush,
+  "angular-require-trackby": angularRequireTrackBy,
+  "angular-prefer-async-pipe": angularPreferAsyncPipe,
+  "angular-img-ngoptimizedimage": angularImgNgOptimized,
 };
 
 export const configs: Record<string, Linter.Config> = {
@@ -52,6 +60,11 @@ export const configs: Record<string, Linter.Config> = {
       "@curiousdev-oss/perf/prefer-web-vitals-optimizations": "warn",
       "@curiousdev-oss/perf/no-render-blocking-resources": "error",
       "@curiousdev-oss/perf/prefer-resource-hints": "warn",
+      // Angular-aware rules: safe no-ops outside Angular
+      "@curiousdev-oss/perf/angular-onpush-change-detection": "warn",
+      "@curiousdev-oss/perf/angular-require-trackby": "warn",
+      "@curiousdev-oss/perf/angular-prefer-async-pipe": "warn",
+      "@curiousdev-oss/perf/angular-img-ngoptimizedimage": "warn",
     },
   },
   strict: {
@@ -74,6 +87,11 @@ export const configs: Record<string, Linter.Config> = {
       "@curiousdev-oss/perf/prefer-web-vitals-optimizations": "error",
       "@curiousdev-oss/perf/no-render-blocking-resources": "error",
       "@curiousdev-oss/perf/prefer-resource-hints": "error",
+      // Angular rules in strict mode
+      "@curiousdev-oss/perf/angular-onpush-change-detection": "error",
+      "@curiousdev-oss/perf/angular-require-trackby": "error",
+      "@curiousdev-oss/perf/angular-prefer-async-pipe": "error",
+      "@curiousdev-oss/perf/angular-img-ngoptimizedimage": "error",
     },
   },
   angular: {
@@ -99,6 +117,11 @@ export const configs: Record<string, Linter.Config> = {
       "@curiousdev-oss/perf/prefer-web-vitals-optimizations": "error",
       "@curiousdev-oss/perf/no-render-blocking-resources": "warn",
       "@curiousdev-oss/perf/prefer-resource-hints": "warn",
+      // Strong Angular performance guidance
+      "@curiousdev-oss/perf/angular-onpush-change-detection": "error",
+      "@curiousdev-oss/perf/angular-require-trackby": "error",
+      "@curiousdev-oss/perf/angular-prefer-async-pipe": "error",
+      "@curiousdev-oss/perf/angular-img-ngoptimizedimage": "error",
     },
   },
 };

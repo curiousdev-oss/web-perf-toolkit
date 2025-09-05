@@ -1,44 +1,12 @@
-# ESLint Performance Plugin Test Applications
+# ESLint Performance Plugin Test Application
 
-This directory contains sample applications to test and demonstrate the `@curiousdev-oss/eslint-plugin-web-perf` rules in action.
+This directory contains a focused Angular sample application to test and demonstrate the `@curiousdev-oss/eslint-plugin-web-perf` rules in action.
 
-> **📦 Note**: These test apps use the published npm package (`^0.1.2`) rather than local file references, providing a realistic testing environment.
+> **📦 v0.1.4 Update**: Streamlined to focus on Angular-specific performance patterns with 18 comprehensive rules including 4 new Angular-specific rules.
 
-## Sample Applications
+## Angular Sample Application
 
-### 1. JavaScript Sample (`js-sample/`)
-
-- **Configuration**: Uses `recommended` config
-- **Framework**: Vanilla JavaScript
-- **Purpose**: Tests basic performance rules without framework specifics
-
-**Run tests:**
-
-```bash
-cd js-sample
-npm install
-npm run lint
-```
-
-**Expected Results**: 45+ problems (varies by configuration)
-
-### 2. TypeScript Sample (`ts-sample/`)
-
-- **Configuration**: Uses `strict` config
-- **Framework**: TypeScript with type checking
-- **Purpose**: Tests performance rules with stricter enforcement
-
-**Run tests:**
-
-```bash
-cd ts-sample
-npm install
-npm run lint
-```
-
-**Expected Results**: 72+ problems (detected by comprehensive rules)
-
-### 3. Angular Sample (`angular-sample/`)
+### Angular Sample (`angular-sample/`)
 
 - **Configuration**: Uses `angular` config
 - **Framework**: Angular with component patterns
@@ -52,11 +20,20 @@ npm install
 npm run lint
 ```
 
-**Expected Results**: 80+ problems (Angular-specific patterns detected)
+**Expected Results**: 99+ problems (Angular-specific patterns detected with v0.1.4)
+
+## New Angular Performance Rules (v0.1.4)
+
+### Angular-Specific Performance Rules
+
+- ✅ `angular-onpush-change-detection`: Enforces ChangeDetectionStrategy.OnPush for better performance
+- ✅ `angular-require-trackby`: Requires trackBy functions in *ngFor directives to prevent DOM churn
+- ✅ `angular-prefer-async-pipe`: Prefers async pipe over manual subscriptions to avoid memory leaks
+- ✅ `angular-img-ngoptimizedimage`: Suggests NgOptimizedImage and enforces image dimensions
 
 ## Rules Being Tested
 
-All sample apps contain intentional performance issues to trigger these rules:
+The Angular sample app contains intentional performance issues to trigger these rules:
 
 ### Core Performance Rules
 
@@ -205,8 +182,6 @@ export default [
 
 | Sample App | Total Problems | Key Patterns                |
 | ---------- | -------------- | --------------------------- |
-| JavaScript | 45+            | Basic performance patterns  |
-| TypeScript | 72+            | Comprehensive rule coverage |
-| Angular    | 80+            | Framework-specific patterns |
+| Angular    | 99+            | Comprehensive Angular performance patterns |
 
-All sample apps successfully demonstrate the comprehensive performance rule coverage across different JavaScript/TypeScript environments.
+The Angular sample app successfully demonstrates comprehensive performance rule coverage with Angular-specific optimizations.

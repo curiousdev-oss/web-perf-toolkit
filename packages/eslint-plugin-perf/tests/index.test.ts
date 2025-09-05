@@ -2,8 +2,8 @@ import { rules, configs } from '../src/index';
 
 describe('ESLint Plugin Index', () => {
   describe('Rules Export', () => {
-    it('should export all 14 performance rules', () => {
-      expect(Object.keys(rules)).toHaveLength(14);
+    it('should export all 18 performance rules', () => {
+      expect(Object.keys(rules)).toHaveLength(18);
     });
 
     it('should export the correct rule names', () => {
@@ -22,6 +22,10 @@ describe('ESLint Plugin Index', () => {
         'prefer-web-vitals-optimizations',
         'no-render-blocking-resources',
         'prefer-resource-hints',
+        'angular-onpush-change-detection',
+        'angular-require-trackby',
+        'angular-prefer-async-pipe',
+        'angular-img-ngoptimizedimage',
       ];
 
       expectedRules.forEach(ruleName => {
@@ -66,21 +70,21 @@ describe('ESLint Plugin Index', () => {
 
     it('should have valid recommended config structure', () => {
       const recommended = configs.recommended;
-      expect(recommended.plugins).toEqual(['@web-perf-toolkit/perf']);
+      expect(recommended.plugins).toEqual(['@curiousdev-oss/perf']);
       expect(recommended.rules).toBeDefined();
       expect(Object.keys(recommended.rules || {}).length).toBeGreaterThan(0);
     });
 
     it('should have valid strict config structure', () => {
       const strict = configs.strict;
-      expect(strict.plugins).toEqual(['@web-perf-toolkit/perf']);
+      expect(strict.plugins).toEqual(['@curiousdev-oss/perf']);
       expect(strict.rules).toBeDefined();
       expect(Object.keys(strict.rules || {}).length).toBeGreaterThan(0);
     });
 
     it('should have valid angular config structure', () => {
       const angular = configs.angular;
-      expect(angular.plugins).toEqual(['@web-perf-toolkit/perf']);
+      expect(angular.plugins).toEqual(['@curiousdev-oss/perf']);
       expect(angular.rules).toBeDefined();
       expect(Object.keys(angular.rules || {}).length).toBeGreaterThan(0);
     });
@@ -89,12 +93,14 @@ describe('ESLint Plugin Index', () => {
       const ruleNames = Object.keys(rules);
       
       ruleNames.forEach(ruleName => {
-        const fullRuleName = `@web-perf-toolkit/perf/${ruleName}`;
+        const fullRuleName = `@curiousdev-oss/perf/${ruleName}`;
         
-        // Check if rule exists in all configs
+        // Check if rule exists in recommended and angular configs
         expect(configs.recommended.rules?.[fullRuleName]).toBeDefined();
-        expect(configs.strict.rules?.[fullRuleName]).toBeDefined();
         expect(configs.angular.rules?.[fullRuleName]).toBeDefined();
+        
+        // All rules should be in strict config now
+        expect(configs.strict.rules?.[fullRuleName]).toBeDefined();
       });
     });
 
@@ -102,7 +108,7 @@ describe('ESLint Plugin Index', () => {
       const ruleNames = Object.keys(rules);
       
       ruleNames.forEach(ruleName => {
-        const fullRuleName = `@web-perf-toolkit/perf/${ruleName}`;
+        const fullRuleName = `@curiousdev-oss/perf/${ruleName}`;
         const recommended = configs.recommended.rules?.[fullRuleName];
         const strict = configs.strict.rules?.[fullRuleName];
         
@@ -117,7 +123,7 @@ describe('ESLint Plugin Index', () => {
 
     it('should have angular-specific configurations', () => {
       const angular = configs.angular;
-      const largeBundleRule = angular.rules?.['@web-perf-toolkit/perf/no-large-bundle-imports'];
+      const largeBundleRule = angular.rules?.['@curiousdev-oss/perf/no-large-bundle-imports'];
       
       expect(Array.isArray(largeBundleRule)).toBe(true);
       if (Array.isArray(largeBundleRule) && largeBundleRule[1]) {

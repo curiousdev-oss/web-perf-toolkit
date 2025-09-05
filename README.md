@@ -7,9 +7,9 @@
 [![Install size](https://packagephobia.com/badge?p=@curiousdev-oss/eslint-plugin-web-perf)](https://packagephobia.com/result?p=@curiousdev-oss/eslint-plugin-web-perf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive ESLint plugin with **performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
+A comprehensive ESLint plugin with **18 performance-focused rules** designed to help developers write more performant JavaScript, TypeScript, and Angular applications.
 
-> 🚀 **v0.1.3 Release** - Production-ready ESLint plugin with comprehensive performance rules!
+> 🚀 **v0.1.4 Release** - Added 4 Angular-specific performance rules for better framework optimization!
 
 ## Overview
 
@@ -73,6 +73,7 @@ Guidance for migrating from legacy APIs to modern, more performant alternatives.
 | **Bundle Optimization** | 3 rules | Import efficiency, lazy loading |
 | **Memory & Performance** | 3 rules | Memory management, algorithms |
 | **Modern Web Standards** | 4 rules | API modernization, DOM efficiency |
+| **Angular Performance** | 4 rules | OnPush, trackBy, async pipe, NgOptimizedImage |
 
 ## Complete Rule Set
 
@@ -98,6 +99,12 @@ Guidance for migrating from legacy APIs to modern, more performant alternatives.
 - `no-expensive-dom-operations` - Optimizes DOM manipulation performance
 - `no-inefficient-loops` - Prevents performance issues in loop constructs
 
+### Angular Performance
+- `angular-onpush-change-detection` - Enforces ChangeDetectionStrategy.OnPush
+- `angular-require-trackby` - Requires trackBy functions in *ngFor directives
+- `angular-prefer-async-pipe` - Prefers async pipe over manual subscriptions
+- `angular-img-ngoptimizedimage` - Suggests NgOptimizedImage and enforces dimensions
+
 ## Configuration Presets
 
 ### Recommended
@@ -120,17 +127,15 @@ Development teams using this plugin typically observe:
 
 ## Sample Applications
 
-The repository includes test applications demonstrating common performance issues:
+The repository includes a focused Angular test application demonstrating comprehensive performance issues:
 
-- **TypeScript Sample** - General performance anti-patterns
-- **Angular Sample** - Framework-specific optimizations  
-- **JavaScript Sample** - Vanilla JavaScript performance patterns
+- **Angular Sample** - Framework-specific optimizations with Angular performance patterns
 
 Test the plugin effectiveness:
 
 ```bash
-cd test-apps/ts-sample
-npx eslint src/performance-issues.ts  # Detects 70+ performance issues
+cd test-apps/angular-sample
+npm install && npm run lint  # Detects 99+ performance issues
 ```
 
 ## Development
@@ -153,25 +158,26 @@ For detailed development information, see [dev-guide.md](./dev-guide.md).
 
 ## Release Information
 
-### Current Version: v0.1.3
+### Current Version: v0.1.4
 
-**What's New in v0.1.3:**
-- ✅ 14 comprehensive performance rules
-- ✅ 3 configuration presets (recommended, strict, angular)
-- ✅ 238 unit tests with 100% rule coverage
-- ✅ TypeScript and JavaScript support
-- ✅ Framework-specific optimizations
-- ✅ Production-ready performance linting
-- 🚀 **78% smaller package size** (515KB → 114KB)
-- ⚡ **Faster installation** with optimized file structure
+**What's New in v0.1.4:**
+- ✅ 18 comprehensive performance rules (+4 Angular-specific)
+- ✅ 4 new Angular performance rules for better framework optimization
+- ✅ Enhanced Angular preset configuration
+- ✅ 247 unit tests with comprehensive coverage
+- ✅ Angular-specific patterns: OnPush, trackBy, async pipe, NgOptimizedImage
+- ✅ Focused Angular test application with 99+ detectable issues
+- ✅ Streamlined monorepo structure
+- ✅ Production-ready Angular performance linting
 
 **Installation:**
 ```bash
-npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.3
+npm install --save-dev @curiousdev-oss/eslint-plugin-web-perf@^0.1.4
 ```
 
 ### Roadmap
-- **v0.2.0** - Additional React-specific rules
+- **v0.1.x** - Bug fixes and Angular rule enhancements
+- **v0.2.0** - Additional React-specific rules  
 - **v0.3.0** - Vue.js framework support
 - **v1.0.0** - Stable API with enterprise features
 

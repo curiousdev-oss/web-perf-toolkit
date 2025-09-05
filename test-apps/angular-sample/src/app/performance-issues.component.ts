@@ -19,13 +19,17 @@ interface Product {
 
 @Component({
   selector: "app-performance-issues",
+  // 🚨 Rule: angular-onpush-change-detection - Missing ChangeDetectionStrategy.OnPush
   template: `
     <div class="products">
+      <!-- 🚨 Rule: angular-img-ngoptimizedimage - should suggest NgOptimizedImage -->
       <!-- 🚨 Rule: img-requires-dimensions - should trigger errors -->
       <img src="hero-banner.jpg" alt="Hero Banner" />
 
       <div class="product-grid">
+        <!-- 🚨 Rule: angular-require-trackby - Missing trackBy function -->
         <div *ngFor="let product of products" class="product-card">
+          <!-- 🚨 Rule: angular-img-ngoptimizedimage - should suggest ngSrc -->
           <!-- Missing dimensions on images - should trigger errors -->
           <img [src]="product.imageUrl" [alt]="product.name" />
           <h3>{{ product.name }}</h3>
@@ -89,13 +93,14 @@ export class PerformanceIssuesComponent implements OnInit, OnDestroy {
 
   setupSubscriptions(): void {
     // 🚨 Rule: no-memory-leaks - Observable subscription without unsubscribe
+    // 🚨 Rule: angular-prefer-async-pipe - Should prefer async pipe in template
     interval(1000)
       .pipe(map((value) => value * 2))
       .subscribe((value) => {
         console.log("Interval value:", value);
       }); // Should trigger error - no unsubscribe
 
-    // Another subscription without cleanup
+    // 🚨 Rule: angular-prefer-async-pipe - Another manual subscription
     this.getProductUpdates().subscribe((products) => {
       this.products = products;
     }); // Should trigger error

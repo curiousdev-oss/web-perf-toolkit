@@ -8,9 +8,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Test Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/curiousdev-oss/web-perf-toolkit)
 
-A comprehensive ESLint plugin with **14 performance-focused rules** designed to help developers write more performant web applications.
+A comprehensive ESLint plugin with **18 performance-focused rules** designed to help developers write more performant web applications.
 
-> **🎉 v0.1.3 Release** - OSS polish, metadata updates, and docs sync.
+> **🎉 v0.1.4 Release** - Added 4 Angular-specific performance rules for better framework optimization.
 
 ## ✨ Features
 
@@ -75,6 +75,7 @@ module.exports = {
 | **📦 Bundle Size**          | 3 rules | Import optimization, lazy loading   |
 | **🧠 Memory & Performance** | 3 rules | Memory leaks, efficient algorithms  |
 | **🌐 Modern Web Standards** | 4 rules | API modernization, DOM optimization |
+| **🅰️ Angular Performance** | 4 rules | OnPush, trackBy, async pipe, NgOptimizedImage |
 
 ### 🎯 Core Web Vitals Rules
 
@@ -317,6 +318,15 @@ rules: {
 }
 ```
 
+### 🅰️ Angular-Specific Performance Rules
+
+- `angular-onpush-change-detection` (suggested/error in Angular preset): Enforce `ChangeDetectionStrategy.OnPush` in `@Component` to reduce change detection work.
+- `angular-require-trackby` (suggested/error in Angular preset): Require `trackBy` in `*ngFor` (detected in inline templates) to prevent DOM churn.
+- `angular-prefer-async-pipe` (suggested/error in Angular preset): Prefer `async` pipe over manual `subscribe()` within component classes.
+- `angular-img-ngoptimizedimage` (suggested/error in Angular preset): Suggest `NgOptimizedImage` (`ngSrc`) and enforce `width`/`height` in inline templates to prevent CLS.
+
+These rules are safe no-ops outside Angular code and do not require app-level ESLint config changes; they are included in this plugin's presets.
+
 ## 🏆 Performance Impact
 
 Projects using this plugin typically see:
@@ -338,6 +348,18 @@ cd test-apps/js-sample && npm run lint    # 36+ issues detected
 ```
 
 ## 📊 Release Notes
+
+### v0.1.4 - Angular Performance Rules
+
+**🅰️ What's New:**
+- ✅ 4 new Angular-specific performance rules
+- ✅ `angular-onpush-change-detection`: Enforces ChangeDetectionStrategy.OnPush
+- ✅ `angular-require-trackby`: Requires trackBy in *ngFor directives
+- ✅ `angular-prefer-async-pipe`: Prefers async pipe over manual subscriptions
+- ✅ `angular-img-ngoptimizedimage`: Suggests NgOptimizedImage and enforces dimensions
+- ✅ Enhanced Angular preset configuration
+- ✅ Comprehensive test coverage for all new rules
+- ✅ Updated documentation and examples
 
 ### v0.1.3 - OSS & Docs Update
 

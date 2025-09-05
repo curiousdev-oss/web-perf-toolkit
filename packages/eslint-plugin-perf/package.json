@@ -1,7 +1,7 @@
 {
   "name": "@curiousdev-oss/eslint-plugin-web-perf",
-  "version": "0.1.3",
-  "description": "Comprehensive ESLint plugin with 14 performance rules for web performance optimization",
+  "version": "0.1.4",
+  "description": "Comprehensive ESLint plugin with 18 performance rules for web performance optimization, including Angular-specific rules",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "type": "module",
