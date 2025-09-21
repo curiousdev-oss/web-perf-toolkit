@@ -1,0 +1,98 @@
+name: ESLint Web Performance Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-plugin:
+    runs-on: ubuntu-latest
+    name: Build Plugin and Test Angular Sample
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install root dependencies
+      run: npm install
+    
+    - name: Build ESLint plugin
+      run: |
+        cd packages/eslint-plugin-perf
+        npm install
+        npm run build
+    
+    - name: Run Angular Sample ESLint Test
+      run: |
+        cd test-apps/angular-sample
+        npm install
+        npm run lint > eslint-results.txt 2>&1 || true
+        echo "=== ESLint Results ==="
+        cat eslint-results.txt
+        
+        # Count the number of problems detected
+        PROBLEM_COUNT=$(grep -o '[0-9]* problems' eslint-results.txt | grep -o '[0-9]*' || echo "0")
+        echo "Detected $PROBLEM_COUNT problems"
+        
+        # Verify we found the expected number of issues (around 99)
+        if [ "$PROBLEM_COUNT" -ge "90" ] && [ "$PROBLEM_COUNT" -le "110" ]; then
+          echo "✅ SUCCESS: ESLint plugin detected expected number of performance issues ($PROBLEM_COUNT)"
+        else
+          echo "❌ UNEXPECTED: Expected ~99 problems, but found $PROBLEM_COUNT"
+          exit 1
+        fi
+    
+    - name: Archive ESLint results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: eslint-results
+        path: test-apps/angular-sample/eslint-results.txt
+    
+    - name: Verify Key Performance Rules
+      run: |
+        cd test-apps/angular-sample
+        echo "=== Checking for key performance rule violations ==="
+        
+        # Check for Angular-specific rules
+        if grep -q "angular-onpush-change-detection" eslint-results.txt; then
+          echo "✅ Angular OnPush change detection rule triggered"
+        else
+          echo "❌ Angular OnPush rule not found"
+        fi
+        
+        if grep -q "angular-require-trackby" eslint-results.txt; then
+          echo "✅ Angular trackBy requirement rule triggered"
+        else
+          echo "❌ Angular trackBy rule not found"
+        fi
+        
+        # Check for Core Web Vitals rules
+        if grep -q "img-requires-dimensions" eslint-results.txt; then
+          echo "✅ Image dimensions rule triggered"
+        else
+          echo "❌ Image dimensions rule not found"
+        fi
+        
+        # Check for bundle optimization rules
+        if grep -q "no-heavy-namespace-imports" eslint-results.txt; then
+          echo "✅ Heavy namespace imports rule triggered"
+        else
+          echo "❌ Heavy namespace imports rule not found"
+        fi
+        
+        # Check for memory leak detection
+        if grep -q "no-memory-leaks" eslint-results.txt; then
+          echo "✅ Memory leaks detection rule triggered"
+        else
+          echo "❌ Memory leaks rule not found"
+        fi
+        
+        echo "=== Rule verification complete ==="
